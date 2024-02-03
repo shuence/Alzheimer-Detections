@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Early Alzheimer Detection</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>WELCOME TO THINKWELL : EARLY DETECTION</h1>
+        <h3>Alzheimer Detection Using MRI Scan</h3>
+    </header>
+
+    <!-- Navbar -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="signin.html">Sign In</a>
+       
+    </nav>
+
+    <!-- Sign In Page -->
+    <section id="signin">
+        <h1>Sign In</h1>
+        <form id="signInForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <input type="submit" value="Sign In">
+        </form>
+
+        <div>
+            <h2>Test Credentials:</h2>
+            <p>Username: admin</p>
+            <p>Password: admin123</p>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const signInForm = document.getElementById('signInForm');
+
+            signInForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                // Get the entered username and password
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+
+                // Check if the credentials match the expected values
+                if (username === 'admin' && password === 'admin123') {
+                    // Redirect to another page
+                    window.location.href = "check.html"; // Replace with the actual page URL
+                } else {
+                    // Display an error message or handle unsuccessful sign-in
+                    alert('Invalid username or password');
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Early Alzheimer Detection</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>WELCOME TO THINKWELL : EARLY DETECTION</h1>
+        <h3>Alzheimer Detection Using MRI Scan</h3>
+    </header>
+
+    <!-- Navbar -->
+    <nav>
+        <a href="about.html">About Us</a>
+        <a href="index.html">Logout</a>
+
+     
+    </nav>
+
+    <!-- Performance Analysis Page -->
+    <section id="performance">
+        <h1>Performance</h1>
+        <div id="chartContainer">
+            <!-- Chart will be displayed here -->
+        </div>
+
+        <!-- Matrix of Images -->
+        <div class="image-matrix">
+            <img src="Heading.jpg" alt="Image 1"width="1080px" height="1080px" >
+        </n>    <h1 align="center">Analysis</h1>
+
+            <img src="Ana.jpg" alt="Image 2" width="1100px" height="750px">
+            <h1 align="start">Plot</h1>
+
+            <img src="new.jpg" alt="Image 3"width="1100px" height="750px">
+            <h3 class="pie">Graph</h3>
+            <img src="GRAPH.jpg" alt="Image 3"width="1100px" height="750px">
+            <h3 class="pie">Pie Chart</h3>
+
+          
+        </div>
+    </section>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Sample data for the chart
+            const data = {
+                labels: ['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5'],
+                datasets: [{
+                    label: 'Performance Data',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1,
+                    data: [65, 59, 80, 81, 56]
+                }]
+            };
+
+            // Get the chart container
+            const chartContainer = document.getElementById('chartContainer');
+
+            // Create a bar chart
+            const myBarChart = new Chart(chartContainer, {
+                type: 'bar',
+                data: data,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

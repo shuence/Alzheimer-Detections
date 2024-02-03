@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Early Alzheimer Detection</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>WELCOME TO THINKWELL : EARLY DETECTION</h1>
+        <h3>Alzheimer Detection Using MRI Scan</h3>
+    </header>
+
+    <!-- Navbar -->
+
+    <nav>
+        <a href="about.html">About Us</a>
+        <a href="index.html">Logout</a>
+
+    </nav>
+
+    <div class="check">
+        <!-- Upload Page -->
+        <section id="upload">
+            <h1>Upload Photo</h1>
+
+            <form id="uploadForm">
+                <input class="fileaccept" type="file" id="photo" name="photo" accept="image/*" required><br>
+
+                <!-- Add the "Check Detection" button -->
+                <button type="button" id="checkDetectionBtn" onclick="checkDetection()">Check Detection</button>
+
+                <div id="result"></div>
+
+                <!-- Add the "Check Analysis" button with countdown -->
+                <button type="button" id="checkAnalysisBtn" onclick="checkAnalysis()" disabled>Check Analysis</button>
+                <div id="countdown"></div>
+            </form>
+        </section>
+    </div>
+
+    <script>
+   
+        function startCountdown(seconds) {
+            let count = seconds;
+            const countdownElement = document.getElementById('countdown');
+            countdownElement.innerHTML = `<p style="color: black;"><b>Processing: ${count} seconds</b></p>`;
+
+            const countdownInterval = setInterval(function () {
+                count--;
+
+                if (count <= 0) {
+                    clearInterval(countdownInterval);
+                    countdownElement.innerHTML = '';
+                    enableButtons();
+                } else {
+                    countdownElement.innerHTML = `<p style="color: black;"><b>Processing: ${count} seconds</b></p>`;
+                }
+            }, 700);
+        }
+
+        function checkDetection() {
+    // Check if an image is selected
+    const fileInput = document.getElementById('photo');
+    if (fileInput.files.length === 0) {
+        alert('Please select an image before checking detection.');
+        return;
+    }
+
+    // Disable buttons
+    disableButtons();
+
+    // Display random result after 10 seconds
+    setTimeout(function () {
+        const randomResult = getRandomResult();
+        document.getElementById('result').innerHTML = `<p style="color: black;">Result: ${randomResult}</p>`;
+        // Enable buttons after displaying result
+        enableButtons();
+    }, 7000);
+
+    // Start countdown for Check Analysis button
+    startCountdown(7); // 7 seconds countdown
+
+    // Enable Check Analysis button after completion
+    document.getElementById('checkAnalysisBtn').disabled = false;
+}
+
+function checkAnalysis() {
+    // Check if "Check Detection" was clicked
+    const detectionBtnEnabled = !document.getElementById('checkDetectionBtn').disabled;
+    if (!detectionBtnEnabled) {
+        alert('Please click "Check Detection" first.');
+        return;
+    }
+
+    // Disable buttons
+    disableButtons();
+
+    // Start countdown for Check Analysis button processing
+    startCountdown(7);
+
+    // Simulate processing, you can replace this with your actual processing logic
+    setTimeout(function () {
+        // Redirect to another page after 10 seconds
+        window.location.href = 'performance.html';
+        // Enable buttons after redirecting
+        enableButtons();
+    }, 7000);
+}
+
+        function disableButtons() {
+            document.getElementById('checkDetectionBtn').disabled = true;
+            document.getElementById('checkAnalysisBtn').disabled = true;
+        }
+
+        function enableButtons() {
+            document.getElementById('checkDetectionBtn').disabled = false;
+            document.getElementById('checkAnalysisBtn').disabled = false;
+        }
+
+        function getRandomResult() {
+            const results = ['Mild Demented', 'Very Mild Demented', 'Moderate Demented', 'Not Demented'];
+            const randomIndex = Math.floor(Math.random() * results.length);
+            return results[randomIndex];
+        }
+    </script>
+
+</body>
+
+</html>
